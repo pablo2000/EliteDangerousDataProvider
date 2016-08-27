@@ -14,8 +14,25 @@ namespace Tests
         {
             string data = "1111111111111111";
             string base64Data = LZString.compressToBase64(data);
-            Assert.AreEqual("Iw1/Ew==", base64Data);
+            Assert.AreEqual("Iw1/EA==", base64Data);
         }
+
+        [TestMethod]
+        public void TestCompressData2()
+        {
+            string data = "111111111111111111111111";
+            var base64Data = LZString.compressToBase64(data);
+            Assert.AreEqual("Iw18aQ==", base64Data);
+        }
+
+        [TestMethod]
+        public void TestCompressData3()
+        {
+            string data = "000000000000000000000000";
+            var base64Data = LZString.compressToBase64(data);
+            Assert.AreEqual("Aw17aQAA", base64Data);
+        }
+
         [TestMethod]
         public void TestDecompressData()
         {
@@ -31,6 +48,15 @@ namespace Tests
             var data = LZString.decompressFromBase64(base64Data);
             Assert.AreEqual("1110111111111111", data);
         }
+
+        // Does not work - need more data to understand the issue
+        //[TestMethod]
+        //public void TestDecompressData3()
+        //{
+        //    string base64Data = "CwBgjCnlPm8Qkm==";
+        //    var data = LZString.decompressFromBase64(base64Data);
+        //    Assert.AreEqual("1110111111111111", data);
+        //}
 
         //[TestMethod]
         //public void TestNetLog()

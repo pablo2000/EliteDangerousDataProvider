@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -624,6 +626,7 @@ namespace EDDIVAPlugin
 
         public static string decompressFromBase64(string input)
         {
+
             string _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
             string output = "";
@@ -692,7 +695,5 @@ namespace EDDIVAPlugin
 
             return output;
         }
-
     }
-
 }

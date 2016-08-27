@@ -2,6 +2,7 @@
 using EliteDangerousDataDefinitions;
 using System;
 using System.Collections.Generic;
+using Utilities;
 
 namespace EDDIVAPlugin
 {
@@ -126,8 +127,10 @@ namespace EDDIVAPlugin
 
             uri += ".";
             uri += LZString.compressToBase64(enableds).Replace('/', '-');
+            Logging.Debug("Compressed enableds " + enableds + " to " + LZString.compressToBase64(enableds).Replace('/', '-'));
             uri += ".";
             uri += LZString.compressToBase64(priorities).Replace('/', '-');
+            Logging.Debug("Compressed priorities " + priorities + " to " + LZString.compressToBase64(priorities).Replace('/', '-'));
 
             string bn;
             if (ship.Name == null)
@@ -139,6 +142,8 @@ namespace EDDIVAPlugin
                 bn = ship.Name + " (" + ship.CallSign + ")";
             }
             uri += "?bn=" + Uri.EscapeDataString(bn);
+
+            Logging.Debug("Coriolis URI is " + uri);
 
             return uri;
         }
